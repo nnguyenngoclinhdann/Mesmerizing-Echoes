@@ -1,0 +1,113 @@
+body {
+  font-family: Arial, sans-serif;
+  background-image: url(./img/s18.jpeg) ;
+  text-align: center;
+  padding-top: 60px;
+}
+
+h1 {
+  font-family: "Lobster", cursive;
+  font-size: 38px;
+  letter-spacing: 1px;
+}
+
+.contact-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.contact-btn {
+  padding: 20px 40px;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  background-color: #a424eeee;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s;
+}
+
+.contact-btn:hover {
+  background-color: #ba52f7ee;
+}
+
+/* Khi được bấm */
+.contact-btn.active {
+  transform: translateY(-8px); /* Nổi lên 8px */
+}
+.nut{
+  position: fixed;
+  bottom: 40px;
+  left: 20px;
+  padding: 8px 14px;
+  background-color:  #a424eeee;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 1000;}
+
+  .white{
+    color: azure;
+  }
+  /* ================= RESPONSIVE ================= */
+
+/* Tablet */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.6rem;
+    margin-bottom: 30px;
+  }
+
+  .contact-container {
+    gap: 24px;
+  }
+
+  .contact-btn {
+    padding: 18px 32px;
+    font-size: 16px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  body {
+    padding-top: 40px;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+    margin-bottom: 24px;
+  }
+
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .contact-btn {
+    width: 80%;
+    max-width: 260px;
+    padding: 16px;
+    font-size: 16px;
+  }
+
+  .nut {
+    bottom: 16px;
+    left: 10px;
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+}
+footer {
+  color: rgba(58, 46, 46, 0.993);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 12px 0;
+  background: transparent; 
+}

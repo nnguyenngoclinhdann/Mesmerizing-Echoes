@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mesmerizing Echoes Login</title>
+    <link rel="stylesheet" href="./css/Login.css" />
+    <link rel="icon" type="image/x-icon" href="./css/img/favicon.ico" />
+  </head>
+  <body>
+    <audio id="bgMusic" autoplay loop muted>
+      <source src="./css/img/MP3_Login.m4a" type="audio/mpeg" />
+    </audio>
+
+    <script>
+      document.addEventListener("click", () => {
+        const music = document.getElementById("bgMusic");
+        music.muted = false;
+        music.play();
+      });
+    </script>
+
+    <div class="form-wrapper">
+      <h2>Sign In</h2>
+      <form action="#">
+        <div class="form-control">
+          <input id="email" type="text" required />
+          <label>Email address</label>
+        </div>
+        <div class="form-control">
+          <input id="password" type="password" required />
+          <label>Password</label>
+        </div>
+        <button type="submit">Sign In</button>
+        <div class="form-help">
+          <div class="remember-me">
+            <input type="checkbox" id="remember-me" />
+            <label for="remember-me">Remember me</label>
+          </div>
+          <a href="./Contact_01.html">Need help?</a>
+        </div>
+      </form>
+      <p>
+        New to Mesmerizing Echoes? <a href="./Register.html">Sign up now</a>
+      </p>
+    </div>
+    <script src="./js/Login.js"></script>
+    <footer>© 2026 Mesmerizing Echoes - All Rights Reserved</footer>
+  </body>
+</html>

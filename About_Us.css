@@ -1,0 +1,252 @@
+:root {
+  --primary: #6d1e62;
+  --accent: #ff9800;
+  --bg: #f5f5f5;
+  --text: #333;
+  --radius: 12px;
+}
+
+
+body.dark {
+  --primary: #81C784;
+  --accent: #ffa726;
+  --bg: #121212;
+  --text: #f5f5f5;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: background .3s ease, color .3s ease;
+}
+
+
+.skip-link {
+  position: absolute;left:-9999px;top:auto;
+}
+.skip-link:focus {
+  left:10px;top:10px;background:#000;color:#fff;padding:5px;
+}
+
+header {
+  background: linear-gradient(135deg,#8717bb,#4a3155);
+  color: #fff;
+  padding: 40px 20px;
+  text-align: center;
+  position: relative;
+}
+header .logo img {
+  width: 60px;height:60px;border-radius:var(--radius);
+}
+.dark-toggle {
+  position: fixed;
+  top: 50px;
+  left: 30px;
+  background-color: #333;
+  padding: 8px 12px;border-radius:8px;cursor:pointer;
+}
+.dark-toggle:hover {background-color:white}
+
+header h1 {
+  font-family: "Lobster", cursive;
+  font-size: 38px;
+  letter-spacing: 1px;
+}
+
+/* Nav */
+nav {
+  background: #fff;
+  display: flex;justify-content:center;flex-wrap:wrap;
+  box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+body.dark nav {background:#1e1e1e;}
+nav a {
+  color:var(--primary);padding:14px;text-decoration:none;font-weight:bold;
+}
+nav a:hover {
+  background:var(--primary);color:#fff;border-radius:6px;
+}
+
+
+main {max-width:1200px;margin:40px auto;padding:0 20px;}
+
+.about {
+  display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center;
+  background:#fff;padding:20px;border-radius:var(--radius);
+  box-shadow:0 8px 15px rgba(0,0,0,0.1);
+}
+.about img {width:100%;border-radius:var(--radius);}
+body.dark .about {background:#1e1e1e;}
+
+
+.team {
+  margin-top:40px;
+  background:#fff;padding:20px;border-radius:var(--radius);
+  box-shadow:0 8px 15px rgba(0,0,0,0.1);
+}
+body.dark .team {background:#1e1e1e;}
+.members {
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;
+}
+.member {
+  background:var(--bg);padding:15px;border-radius:var(--radius);
+  text-align:center;transition:transform .3s;
+}
+.member:hover {transform:translateY(-5px);}
+.member img {width:50%;border-radius:var(--radius);}
+
+
+.join {
+  margin-top:40px;background:#fff;padding:20px;border-radius:var(--radius);
+  box-shadow:0 8px 15px rgba(0,0,0,0.1);
+}
+body.dark .join {background:#1e1e1e;}
+.join img {width:100%;border-radius:var(--radius);}
+form {display:flex;flex-direction:column;}
+form input,form textarea {
+  margin-bottom:10px;padding:12px;border-radius:8px;border:1px solid #ddd;
+}
+form button {
+  background:var(--primary);color:#fff;border:none;padding:12px;
+  border-radius:8px;cursor:pointer;font-weight:bold;
+}
+form button:hover {background:var(--accent);}
+
+/* Footer */
+footer {
+  text-align:center;padding:20px;color:var(--text);
+}
+.nut{
+  position: fixed;
+  bottom: 40px;
+  left: 20px;
+  padding: 8px 14px;
+  background-color:  #a424eeee;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 1000;}
+
+  
+h2 {
+  font-family: "Noto Serif Display", serif;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  color: #fff;
+}
+
+
+p {
+  font-family: "Noto Serif Display", serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #ccc;
+}
+
+  /* ================= RESPONSIVE ================= */
+
+/* Tablet */
+@media (max-width: 992px) {
+  header {
+    padding: 30px 16px;
+  }
+
+  .dark-toggle {
+    top: 20px;
+    left: 16px;
+  }
+
+  main {
+    margin: 30px auto;
+  }
+
+  .about {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .about img {
+    max-width: 420px;
+    margin: 0 auto;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  header {
+    padding: 24px 14px;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  header p {
+    font-size: 0.9rem;
+  }
+
+  .dark-toggle {
+    top: 14px;
+    left: 12px;
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+
+  nav {
+    justify-content: flex-start;
+    overflow-x: auto;
+  }
+
+  nav a {
+    padding: 12px 10px;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  main {
+    margin: 20px auto;
+    padding: 0 14px;
+  }
+
+  .team,
+  .join {
+    margin-top: 24px;
+    padding: 16px;
+  }
+
+  .members {
+    gap: 14px;
+  }
+
+  .member img {
+    width: 60%;
+  }
+
+  form input,
+  form textarea {
+    font-size: 14px;
+  }
+
+  form button {
+    font-size: 14px;
+  }
+
+  footer {
+    font-size: 0.85rem;
+    padding: 16px;
+  }
+
+  .nut {
+    bottom: 14px;
+    left: 10px;
+    padding: 6px 12px;
+    font-size: 13px;
+    background-color:  #a424eeee;
+  }
+}

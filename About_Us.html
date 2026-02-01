@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mesmerizing Echoes</title>
+
+    <link rel="stylesheet" href="./css/About_Us.css" />
+    <link rel="icon" type="image/x-icon" href="./css/img/favicon.ico" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <a href="#main" class="skip-link">Bỏ qua tới nội dung chính</a>
+
+    <header>
+      <button
+        class="dark-toggle"
+        id="themeBtn"
+        aria-pressed="false"
+        title="Dark/Light"
+      >
+        🌙 / ☀️
+      </button>
+      <h1>Feel The Vibe, Hear The Echo.</h1>
+      <p>Thư giãn – Mộng mơ – Êm dịu</p>
+    </header>
+
+    <nav>
+      <a href="#about">Giới thiệu</a>
+      <a href="#team">Đội ngũ</a>
+      <a href="#join">Tham gia</a>
+    </nav>
+
+    <main id="main">
+      <section id="about" class="about">
+        <img src="./css/img/s8.jpeg" alt="echo" />
+        <div>
+          <h2>Giới thiệu</h2>
+          <p>
+            Mesmerizing Echoes là không gian âm nhạc mơ mộng và êm dịu, nơi mỗi
+            giai điệu vang lên đều chạm đến cảm xúc sâu lắng bên trong bạn. Feel
+            the vibe, hear the echo. 🎧✨
+          </p>
+          <a href="#join" class="cta">Tham gia ngay</a>
+        </div>
+      </section>
+
+      <section id="team" class="team">
+        <h2>Đội ngũ</h2>
+        <div class="members">
+          <div class="member">
+            <img src="./css/img/Đ.jpeg" alt="Ảnh Nguyễn Ngọc Linh Đan" />
+            <strong><h2>Nguyễn Ngọc Linh Đan</h2></strong>
+          </div>
+          <div class="member">
+            <img src="./css/img/P.jpeg" alt="Ảnh Phạm Minh Phước" />
+            <strong><h2>Phạm Minh Phước</h2></strong>
+          </div>
+        </div>
+      </section>
+
+      <button
+        class="nut"
+        onclick="window.open('http://127.0.0.1:5500/ME/html/Main.html')"
+      >
+        &lt;&lt; trở lại
+      </button>
+
+      <section id="join" class="join">
+        <h2>Tham gia cùng chúng tôi</h2>
+        <p>
+          Nếu bạn yêu âm nhạc và muốn đóng góp, hãy điền thông tin bên dưới:
+        </p>
+
+        <form id="joinForm">
+          <label for="name">Họ tên</label>
+          <input type="text" id="name" required />
+
+          <label for="email">Email</label>
+          <input type="email" id="email" required />
+
+          <label for="message">Bạn muốn tham gia như thế nào?</label>
+          <textarea id="message" rows="4" required></textarea>
+
+          <button type="submit">Gửi đăng ký</button>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="year"></span> Mesmerizing Echoes - All Rights Reserved
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const body = document.body;
+        const themeBtn = document.getElementById("themeBtn");
+        const yearEl = document.getElementById("year");
+        const form = document.getElementById("joinForm");
+
+        yearEl.textContent = new Date().getFullYear();
+
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "dark") {
+          body.classList.add("dark");
+          themeBtn.setAttribute("aria-pressed", "true");
+        }
+
+        themeBtn.addEventListener("click", () => {
+          const isDark = body.classList.toggle("dark");
+          localStorage.setItem("theme", isDark ? "dark" : "light");
+          themeBtn.setAttribute("aria-pressed", isDark);
+        });
+
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+          }
+
+          const data = {
+            name: name.value,
+            email: email.value,
+            message: message.value,
+            time: new Date().toLocaleString(),
+          };
+
+          const stored = JSON.parse(localStorage.getItem("joinForms")) || [];
+          stored.push(data);
+          localStorage.setItem("joinForms", JSON.stringify(stored));
+
+          alert("Cảm ơn bạn đã đăng ký! 💖");
+          form.reset();
+        });
+      });
+    </script>
+  </body>
+</html>

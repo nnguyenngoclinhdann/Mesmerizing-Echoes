@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mesmerizing Echoes Register</title>
+    <link rel="stylesheet" href="./css/Register.css" />
+    <link rel="icon" type="image/x-icon" href="./css/img/favicon.ico" />
+  </head>
+  <body>
+    <audio id="bgMusic" autoplay loop muted>
+      <source src="./css/img/MP3_Register.m4a" type="audio/mpeg" />
+    </audio>
+
+    <script>
+      document.addEventListener("click", () => {
+        const music = document.getElementById("bgMusic");
+        music.muted = false;
+        music.play();
+      });
+    </script>
+    <div class="form-wrapper">
+      <h2>Sign Up</h2>
+      <form action="#">
+        <div class="form-control">
+          <input id="username" type="text" required />
+          <label>Username</label>
+        </div>
+        <div class="form-control">
+          <input id="email" type="text" required />
+          <label>Email address</label>
+        </div>
+        <div class="form-control">
+          <input id="password" type="password" required />
+          <label>Password</label>
+        </div>
+        <button type="submit">Sign Up</button>
+        <div class="form-help">
+          <div class="remember-me">
+            <input type="checkbox" id="remember-me" />
+            <label for="remember-me"
+              ><a href="./Policy_01.html">Agree with our policy</a></label
+            >
+          </div>
+        </div>
+      </form>
+      <p>Already have an account? <a href="./Login.html">Sign in now</a></p>
+    </div>
+    <script src="./js/Register.js"></script>
+    <footer>© 2026 Mesmerizing Echoes - All Rights Reserved</footer>
+  </body>
+</html>

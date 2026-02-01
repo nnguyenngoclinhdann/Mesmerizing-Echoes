@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./css/Support.css" />
+    <link rel="icon" type="image/x-icon" href="./css/img/favicon.ico" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
+      rel="stylesheet"
+    />
+    <title>Trợ Giúp | Mesmerizing Echoes</title>
+  </head>
+  <body>
+    <button
+      class="nut"
+      onclick="window.open('http://127.0.0.1:5500/ME/html/Main.html')"
+    >
+      << trở lại
+    </button>
+    <div class="container">
+      <header>
+        <h1>Hỗ trợ</h1>
+        <p>Chúng tôi luôn sẵn sàng trợ giúp và cải thiện dịch vụ.</p>
+      </header>
+      <form id="feedbackForm">
+        <div class="form-group">
+          <label for="name">Tên tài khoản</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Nhập tên tài khoản của bạn"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="example@domain.com"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="topic">Nội dung</label>
+          <select id="topic" name="topic" required>
+            <option value="">-- Chọn nội dung --</option>
+            <option value="service">Báo cáo lỗi</option>
+            <option value="support">Giúp đỡ</option>
+            <option value="other">Dịch vụ</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Mức độ nghiêm trọng</label>
+          <div class="rating" id="rating">
+            <span data-value="1">&#9733;</span>
+            <span data-value="2">&#9733;</span>
+            <span data-value="3">&#9733;</span>
+            <span data-value="4">&#9733;</span>
+            <span data-value="5">&#9733;</span>
+          </div>
+        </div>
+        <div class="form-group form-group-full">
+          <label for="message">Nội dung chi tiết</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            placeholder="Nhập chi tiết vấn đề của bạn để được hỗ trợ..."
+            required
+          ></textarea>
+        </div>
+        <div class="actions">
+          <button type="submit" class="btn-primary">Gửi ý kiến</button>
+          <button type="reset" class="btn-secondary">Xóa</button>
+          <div id="formMessage" class="message-box" style="display: none"></div>
+        </div>
+      </form>
+      <footer>© 2026 Mesmerizing Echoes - All Rights Reserved</footer>
+    </div>
+
+    <script>
+      const ratingStars = document.querySelectorAll("#rating span");
+      let selectedRating = 0;
+
+      ratingStars.forEach((star) => {
+        star.addEventListener("click", () => {
+          selectedRating = parseInt(star.dataset.value);
+          ratingStars.forEach((s) =>
+            s.classList.toggle(
+              "active",
+              parseInt(s.dataset.value) <= selectedRating,
+            ),
+          );
+        });
+      });
+
+      const form = document.getElementById("feedbackForm");
+      const formMessage = document.getElementById("formMessage");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        formMessage.style.display = "none";
+
+        const name = form.name.value.trim();
+        const email = form.email.value.trim();
+        const topic = form.topic.value;
+        const message = form.message.value.trim();
+
+        if (!name || !email || !topic || !message || selectedRating === 0) {
+          showMessage(
+            "Vui lòng điền đầy đủ thông tin và chọn đánh giá!",
+            false,
+          );
+          return;
+        }
+
+        const feedback = {
+          name,
+          email,
+          topic,
+          message,
+          rating: selectedRating,
+          date: new Date().toISOString(),
+        };
+        const list = JSON.parse(localStorage.getItem("feedbacks") || "[]");
+        list.unshift(feedback);
+        localStorage.setItem("feedbacks", JSON.stringify(list));
+
+        form.reset();
+        selectedRating = 0;
+        ratingStars.forEach((s) => s.classList.remove("active"));
+        showMessage("Cảm ơn bạn! Ý kiến đã được gửi.", true);
+      });
+
+      function showMessage(msg, success) {
+        formMessage.textContent = msg;
+        formMessage.className = `message-box ${success ? "success" : "error"}`;
+        formMessage.style.display = "block";
+      }
+    </script>
+  </body>
+</html>
